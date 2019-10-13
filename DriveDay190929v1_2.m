@@ -4,7 +4,7 @@
 %started moving
 %made script into a function to be called by main code for all projects
 
-function[]=DriveDay190929v1_2(testNumber)
+function[]=DriveDay190929v1_2(testNumber,Data)
 totalTime = size(Data,1);
 time=(1:totalTime); %original time scale
 duration = (totalTime/1200);
@@ -34,7 +34,7 @@ frontLinPot = Data(time,4);
 stringPot = Data(time,6);
 zAccel = Data(time,7);
 hallEffect = Data(time,16);
-
+%{
 subplot(3,2,1);
 %figure(1);
 plot(timeSeconds,rearLinPot,"blue");
@@ -72,4 +72,5 @@ title("Car Speed (mph)");
 sgtitle(strcat('Test # ',string(testNumber)));
 %save moved to bottom, done after all the plotting
 save(fileName);
+%}
 end
