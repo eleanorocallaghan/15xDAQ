@@ -1,4 +1,13 @@
 % load all drive day data sets that have been downloaded
+for i=2:31 %run through each data set and save modified data into new files
+    Data = load(strcat('190928DriveDay_', num2str(i,'%04.f'), '.mat'));
+    DriveDay190929v1_2(i, Data); %saving function
+end 
+
+%ask user for test to display
+testNumber = input('Test number?');
+fileName2 = strcat(string(testNumber),"driveDay190929");
+DataPlotting(fileName2);
 
 % call function 1: get useful data from TCS3 output, cut out irrelevant
 % data, organize data into one array for each test
@@ -14,5 +23,3 @@
 
 % call function 8: save all cleaned up data in new array, save all plots
 % and relevant numbers
-
-%gfckgvjlbhkjnlkm;lkjnj
