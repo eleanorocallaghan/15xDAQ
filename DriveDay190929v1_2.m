@@ -71,6 +71,6 @@ title("Car Speed (mph)");
 
 sgtitle(strcat('Test # ',string(testNumber)));
 %save moved to bottom, done after all the plotting
-save(fileName);
 %}
+save(fileName);
 end
