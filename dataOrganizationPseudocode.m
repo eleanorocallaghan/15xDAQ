@@ -1,0 +1,16 @@
+% load all drive day data sets that have been downloaded
+
+% call function 1: get useful data from TCS3 output, cut out irrelevant
+% data, organize data into one array for each test
+% user input: what kind of test, sample rate
+
+% call function 2: steering angle data cleanup
+% call function 3: hall effect data cleanup
+% call function 4: accelerometer data cleanup
+% call function 5: linear potentiometer data cleanup
+% call function 6: gps data cleanup
+% call function 7: plot all data together for each test with display of
+% relevant values
+
+% call function 8: save all cleaned up data in new array, save all plots
+% and relevant numbers
