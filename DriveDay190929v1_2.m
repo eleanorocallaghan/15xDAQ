@@ -2,7 +2,9 @@
 %unnecessary data (car wasn't moving) removed from time and data tables
 %time on plots made into seconds, with 0 being the point where the car
 %started moving
+%made script into a function to be called by main code for all projects
 
+function[]=DriveDay190929v1_2(testNumber)
 totalTime = size(Data,1);
 time=(1:totalTime); %original time scale
 duration = (totalTime/1200);
@@ -23,7 +25,7 @@ end
 time=(firstCutoff:finalCutoff); %modified time scale
 timeSeconds=(time/1200.0)-(firstCutoff/1200.0);
 
-testNumber = input("Test Number?");
+%testNumber = input("Test Number?");
 fileName = strcat(string(testNumber),"driveDay190929");
 rearLinPot = Data(time,1);
 xAccel = Data(time,2);
@@ -70,3 +72,4 @@ title("Car Speed (mph)");
 sgtitle(strcat('Test # ',string(testNumber)));
 %save moved to bottom, done after all the plotting
 save(fileName);
+end
