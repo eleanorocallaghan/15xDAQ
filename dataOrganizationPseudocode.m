@@ -14,3 +14,5 @@
 
 % call function 8: save all cleaned up data in new array, save all plots
 % and relevant numbers
+
+%gfckgvjlbhkjnlkm;lkjnj
