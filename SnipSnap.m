@@ -4,7 +4,7 @@
 %started moving
 %made script into a function to be called by main code for all projects
 
-function[]=DriveDay190929v1_2(testNumber,filename)
+function[]=SnipSnap(testNumber,filename)
 Data=load(filename);
 totalTime = size(Data,1);
 time=(1:totalTime); %original time scale

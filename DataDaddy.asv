@@ -27,8 +27,10 @@ back h arm strain
 
 for i = 17:size(testOverview, 1) %run through each data set and save modified data into new files
     filename(i-16, 1) = strcat(table2array(testOverview(i, 2)), '.mat');
-    load(filename(i-16, 1))
-    SnipSnap(filename(i-16), testNumber(i-16))
+%     load(string(strcat(table2array(testOverview(i, 2)), '.mat')));
+%     field = strcat('test',num2str(i-16));
+%     Data.(field) = Data
+    
     %DriveDay190929v1_2(i, Data); %saving function
 end
 

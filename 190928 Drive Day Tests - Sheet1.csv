@@ -1,0 +1,46 @@
+1,Rear linear potentiometer,,
+2,X acceleration,,
+3,Y acceleration,,
+4,Front linear Potentiometer,,
+5,0,,
+6,String Potentiometer,,
+7,Z acceleration,,
+8,0,,
+9,0,,
+10,0,,
+11,0,,
+12,0,,
+13,0,,
+14,0,,
+15,0,,
+16,Hall Effect,,
+2,190928DriveDay_0002,1200Hz,Sally
+3,190928DriveDay_0003,1200Hz,Sally
+4,190928DriveDay_0004,1200Hz,Sally
+5,190928DriveDay_0005,1200Hz,Sally
+6,190928DriveDay_0006,1200Hz,"high speed 90° corner, no brakes"
+7,190928DriveDay_0007,1200Hz,"high speed 90° corner, no brakes"
+8,190928DriveDay_0008,1200Hz,"low speed 90° corner, no brakes"
+9,190928DriveDay_0009,1200Hz,"low speed 90° corner, no brakes"
+10,190928DriveDay_0010,1200Hz,"high speed 45° corner, no brakes"
+11,190928DriveDay_0011,1200Hz,"high speed 45° corner, no brakes"
+12,190928DriveDay_0012,1200Hz,high speed 180° turn
+13,190928DriveDay_0013,1200Hz,high speed 180° turn
+14,190928DriveDay_0014,1200Hz,"high speed 90° corner, with brakes"
+15,190928DriveDay_0015,1200Hz,"high speed 90° corner, with brakes"
+16,190928DriveDay_0016,1200Hz,slalom
+17,190928DriveDay_0017,1200Hz,slalom
+18,190928DriveDay_0018,1200Hz,"accel run, end w/ brakes"
+19,190928DriveDay_0019,1200Hz,"accel run, end w/ brakes"
+20,190928DriveDay_0020,1200Hz,hill climb
+21,190928DriveDay_0021,1200Hz,hill climb
+22,190928DriveDay_0022,1200Hz,jump landing
+23,190928DriveDay_0023,1200Hz,jump landing
+24,190928DriveDay_0024,1200Hz,cornering in a rut
+25,190928DriveDay_0025,1200Hz,cornering in a rut
+26,190928DriveDay_0026,1200Hz,obstacle
+27,190928DriveDay_0027,1200Hz,obstacle
+28,190928DriveDay_0028,1200Hz,rollover
+29,190928DriveDay_0029,1200Hz,rollover
+30,190928DriveDay_0030,1200Hz,rollover
+31,190928DriveDay_0031,1200Hz,give 'er hell
