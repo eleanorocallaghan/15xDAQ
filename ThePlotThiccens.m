@@ -16,6 +16,7 @@ stringPot = cleanedData(time,5);
 zAccel = cleanedData(time,4);
 hallEffect = cleanedData(time,1);
 
+close all
 clf(figure(testNumber))
 figure(testNumber)
 subplot(3,2,1);
