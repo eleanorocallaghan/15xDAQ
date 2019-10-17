@@ -27,7 +27,7 @@ desired column order:
 20 - GPS altitude
 %}
 
-function[]=SnipSnap(fileName, testNumber)
+function[cleanedDataName]=SnipSnap(fileName, testNumber)
 load(string(fileName));
 totalTime = size(Data,1);
 time=(1:totalTime); %original time scale
@@ -70,5 +70,5 @@ hallEffect = Data(time,16);
 
 cutData=[hallEffect xAccel yAccel zAccel stringPot frontLinPot rearLinPot];
 save(newFileName, 'cutData');
-load(newFileName)
+cleanedDataName = strcat(newFileName, '.mat');
 end
