@@ -1,8 +1,10 @@
 %plotting function for modified data
 %takes data cleaned up in formatting function (DriveDay190929v1.2)
 %puts data in a subplot
-function[]=DataPlotting(filename)
-Data=load(filename);
+
+function[]=ThePlotThiccens(testNumber, testDate)
+cleanedFileName = strcat(string(testDate), 'Test', string(testNumber));
+Data=load(cleanedFileName);
 time=(1:size(Data,1));
 timeSeconds=(time/1200.0)-(1/1200.0);
 
