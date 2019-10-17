@@ -29,7 +29,7 @@ column order:
 %}
 
 
-for i = 17:size(testOverview, 1) %run through each data set and save modified data into new files
+for i = 25%size(testOverview, 1) %run through each data set and save modified data into new files
     filename(i-16, 1) = strcat(table2array(testOverview(i, 2)), '.mat');
     SnipSnap(filename(i-16), testNumber(i-16))
     ThePlotThiccens(i-16, testDate)
