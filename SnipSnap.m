@@ -36,16 +36,20 @@ time=(1:totalTime); %original time scale
 firstCutoff=1.0;
 finalCutoff=totalTime;
 %the following cutoff loops are based on the hall effect sensor
+%testArray=zeros(10,1);
 for i=1:totalTime/2
-    if Data(i,16)==0 %records last pt for which HE=0 before car starts
-        firstCutoff=i+1;
+    if Data(i,16)~=0 %records last pt for which HE=0 before car starts
+        firstCutoff=i;
+        break;
     end
 end
 for j=totalTime:-1:totalTime/2
-    if Data(j,16)==0 %records last pt where HE=0 after car stops
-        finalCutoff=j-1;
+    if Data(j,16)~=0 %records last pt where HE=0 after car stops
+        finalCutoff=j;
+        break;
     end
 end
+
 time=(firstCutoff:finalCutoff); %modified time scale
 
 %timeSeconds=(time/1200.0)-(firstCutoff/1200.0);
