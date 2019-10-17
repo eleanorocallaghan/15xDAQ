@@ -5,7 +5,7 @@
 %made script into a function to be called by main code for all projects
 
 %{
-column order:
+desired column order:
 1 - hall effect
 2 - x accel
 3 - y accel
@@ -31,7 +31,7 @@ function[]=SnipSnap(fileName, testNumber)
 load(string(fileName));
 totalTime = size(Data,1);
 time=(1:totalTime); %original time scale
-duration = (totalTime/1200);
+%duration = (totalTime/1200);
 
 firstCutoff=1.0;
 finalCutoff=totalTime;
@@ -47,11 +47,11 @@ for j=totalTime:-1:totalTime/2
     end
 end
 time=(firstCutoff:finalCutoff); %modified time scale
-timeSeconds=(time/1200.0)-(firstCutoff/1200.0);
 
-%testNumber = input("Test Number?");
+%timeSeconds=(time/1200.0)-(firstCutoff/1200.0);
+
 newFileName = strcat('190929Test',string(testNumber));
-%{
+
 rearLinPot = Data(time,1);
 xAccel = Data(time,2);
 yAccel = Data(time,3);
@@ -59,6 +59,16 @@ frontLinPot = Data(time,4);
 stringPot = Data(time,6);
 zAccel = Data(time,7);
 hallEffect = Data(time,16);
-%}
-save(newFileName);
+
+% Data(time,1)=hallEffect;
+% Data(time,2)=xAccel; %redundant
+% Data(time,3)=yAccel; %redundant
+% Data(time,4)=zAccel;
+% Data(time,5)=stringPot;
+% Data(time,6)=frontLinPot;
+% Data(time,7)=rearLinPot;
+
+cutData=[hallEffect xAccel yAccel zAccel stringPot frontLinPot rearLinPot];
+save(newFileName, 'cutData');
+load(newFileName)
 end
