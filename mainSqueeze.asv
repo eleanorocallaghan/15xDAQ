@@ -1,0 +1,19 @@
+function [frontShock,rearShock,maxFrontDroop,maxRearDroop, maxFrontBump, maxRearBump]=mainSqueeze(rearLinPot,frontLinPot)
+%full droop: shocks are fully extended (5)
+%full bump: shocks are fully compressed (0)
+%needs for the plot:
+%max
+%minimum
+%adjust plot to actually range from full bump to full droop
+currentRange=5.0;
+fullBump=0.0;
+fullDroop=10.0;
+frontShock=(fullDroop-fullBump)/currentRange*frontLinPot;
+rearShock=(fullDroop-fullBump)/currentRange*rearLinPot;
+
+maxFrontBump=min(frontLinPot);
+maxRearBump=min(rearLinPot);
+
+maxFrontDroop=max(frontLinPot);
+maxRearDroop=max
+end
