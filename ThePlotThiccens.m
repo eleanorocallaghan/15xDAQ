@@ -8,6 +8,7 @@ cleanedData = cleanedData.cutData;
 time=(1:size(cleanedData,1));
 timeSeconds=(time/1200.0)-(1/1200.0);
 
+
 rearLinPot = cleanedData(time,7);
 xAccel = cleanedData(time,2);
 yAccel = cleanedData(time,3);
@@ -16,7 +17,7 @@ stringPot = cleanedData(time,5);
 zAccel = cleanedData(time,4);
 hallEffect = cleanedData(time,1);
 
-close all
+%close all
 clf(figure(testNumber))
 figure(testNumber)
 subplot(3,2,1);

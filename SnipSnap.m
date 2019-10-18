@@ -38,13 +38,13 @@ finalCutoff=totalTime;
 %the following cutoff loops are based on the hall effect sensor
 %testArray=zeros(10,1);
 for i=1:totalTime/2
-    if Data(i,16)~=0 %records last pt for which HE=0 before car starts
+    if Data(i,16)>5 %records last pt for which HE=0 before car starts
         firstCutoff=i;
         break;
     end
 end
 for j=totalTime:-1:totalTime/2
-    if Data(j,16)~=0 %records last pt where HE=0 after car stops
+    if Data(j,16)>5 %records last pt where HE=0 after car stops
         finalCutoff=j;
         break;
     end
@@ -56,13 +56,23 @@ time=(firstCutoff:finalCutoff); %modified time scale
 
 newFileName = strcat('190929Test',string(testNumber));
 
-rearLinPot = Data(time,1);
-xAccel = Data(time,2);
-yAccel = Data(time,3);
-frontLinPot = Data(time,4);
-stringPot = Data(time,6);
-zAccel = Data(time,7);
-hallEffect = Data(time,16);
+% filtering the data (2 gaussian filters)
+s1 = 100; % sigma for hall effect filter
+gf1 = gausswin(6*s1 + 1)';
+gf1 = gf1 / sum(gf1); % normalize
+
+s2=10; %sigma and fit for everything else
+gf2=gausswin(6*s2+1)';
+gf2=gf2/sum(gf2);
+
+%reorganizing/fitting the data
+rearLinPot = conv(Data(time,1),gf2,'same');
+xAccel = conv(Data(time,2),gf1,'same');
+yAccel = conv(Data(time,3),gf1,'same');
+frontLinPot = conv(Data(time,4),gf2,'same');
+stringPot = conv(Data(time,6),gf2,'same');
+zAccel = conv(Data(time,7),gf1,'same');
+hallEffect = conv(Data(time,16),gf1,'same');
 
 % Data(time,1)=hallEffect;
 % Data(time,2)=xAccel; %redundant
