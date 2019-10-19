@@ -5,17 +5,17 @@ function [frontShock,rearShock,maxFrontDroop,maxRearDroop, maxFrontBump, maxRear
 %max
 %minimum
 %adjust plot to actually range from full bump to full droop
-currentRange=5.0;
-fullBump=0.0;
-fullDroop=10.0;
-frontShock=(fullDroop-fullBump)/currentRange*frontLinPot;
-rearShock=(fullDroop-fullBump)/currentRange*rearLinPot;
+currentRange = 5.0;
+fullBump = 0.0;
+fullDroop = 10.0;
+frontShock = (fullDroop-fullBump)/currentRange*frontLinPot;
+rearShock = (fullDroop-fullBump)/currentRange*rearLinPot;
 
 %closest to full bump for both potentiometers
-maxFrontBump=min(frontLinPot);
-maxRearBump=min(rearLinPot);
+maxFrontBump = min(frontShock);
+maxRearBump = min(rearShock);
 
 %closest to full droop for both potentiometers
-maxFrontDroop=max(frontLinPot);
-maxRearDroop=max(rearLinPot);
+maxFrontDroop = max(frontShock);
+maxRearDroop = max(rearShock);
 end

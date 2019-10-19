@@ -30,22 +30,22 @@ desired column order:
 function[cleanedDataName]=SnipSnap(fileName, testNumber)
 load(string(fileName));
 totalTime = size(Data,1);
-time=(1:totalTime); %original time scale
+time = (1:totalTime); %original time scale
 %duration = (totalTime/1200);
 
-firstCutoff=1.0;
-finalCutoff=totalTime;
+firstCutoff = 1.0;
+finalCutoff = totalTime;
 %the following cutoff loops are based on the hall effect sensor
 %testArray=zeros(10,1);
-for i=1:totalTime/2
-    if Data(i,16)>5 %records last pt for which HE=0 before car starts
-        firstCutoff=i;
+for i = 1:totalTime/2
+    if Data(i,16) > 5 %records last pt for which HE=0 before car starts
+        firstCutoff = i;
         break;
     end
 end
-for j=totalTime:-1:totalTime/2
-    if Data(j,16)>5 %records last pt where HE=0 after car stops
-        finalCutoff=j;
+for j = totalTime:-1:totalTime/2
+    if Data(j,16) > 5 %records last pt where HE=0 after car stops
+        finalCutoff = j;
         break;
     end
 end
@@ -82,7 +82,7 @@ hallEffect = conv(Data(time,16),gf1,'same');
 % Data(time,6)=frontLinPot;
 % Data(time,7)=rearLinPot;
 
-cutData=[hallEffect xAccel yAccel zAccel stringPot frontLinPot rearLinPot];
+cutData = [hallEffect xAccel yAccel zAccel stringPot frontLinPot rearLinPot];
 save(newFileName, 'cutData');
 cleanedDataName = strcat(newFileName, '.mat');
 end

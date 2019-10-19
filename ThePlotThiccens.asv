@@ -45,15 +45,15 @@ plot(timeSeconds,carSpeed);
 title("Car Speed"); %should include top speed
 
 %formatting text
-speed = strcat('Top Speed: ',string(topSpeed),'mph');
-fdroop = strcat('Closest to Full Droop (front):  ', string(maxfd),'in');
-rdroop = strcat('Cosest to Full Droop (rear):  ', string(maxrd),'in');
-fbump = strcat('Closest to Full Bump (front):  ', string(maxfb),'in');
-rbump = strcat('Closest to Full Bump (rear):  ', string(maxrb),'in');
+speed = strcat('Top Speed: ',string(topSpeed));
+fdroop = strcat('Closest to Full Droop (front): ', string(maxfd));
+rdroop = strcat('Cosest to Full Droop (rear): ', string(maxrd));
+fbump = strcat('Closest to Full Bump (front): ', string(maxfb));
+rbump = strcat('Closest to Full Bump (rear): ', string(maxrb));
 
 %text
 subplot(2,2,4);
-text(0,0.5,speed+newline+fdroop+newline+rdroop+newline+fbump+newline+rbump);
+text(0.5,0.5,strcat(speed,'\n',fdroop,'\n',rdroop,'\n',fbump,'\n',rbump));
 axis off;
 %accels
 %{
@@ -67,6 +67,6 @@ title("Accelerometer");
 legend('x','y','z');
 hold off
 %}
-sgtitle(strcat('Test # ',string(testNumber),':  ',string(testName)));
+sgtitle(strcat('Test # ',string(testNumber),': ',string(testName)));
 
 end
