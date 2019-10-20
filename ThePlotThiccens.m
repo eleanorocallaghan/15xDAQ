@@ -17,13 +17,19 @@ stringPot = cleanedData(time,5);
 frontLinPot = cleanedData(time,6);
 rearLinPot = cleanedData(time,7);
 
+latitude = cleanedData(time,8);
+longitude = cleanedData(time,9);
+sog = cleanedData(time,10);
+
+%plotting GPS data
+[gpsSpeed,gpsMax]=Jeeps(sog); %maybe add this to skrrrt?
 
 %plotting
 clf(figure(testNumber))
 figure(testNumber)
 
 %shock extension/compression
-subplot(2,2,1);
+subplot(2,3,1);
 [fshock,rshock,maxfd,maxrd,maxfb,maxrb] = mainSqueeze(rearLinPot,frontLinPot);
 plot(timeSeconds,fshock,"blue");
 title("Shock Extension/Compression");
@@ -35,7 +41,7 @@ ylabel('Shock Displacement (inches)');
 hold off
 
 %steering angle
-subplot(2,2,2)
+subplot(2,3,2)
 steeringAngle = ohWowSwerve(stringPot);
 plot(timeSeconds,steeringAngle);
 title("Steering Angle");
@@ -43,12 +49,15 @@ xlabel('Time (sec)');
 ylabel('Steering Angle (degrees)');
 
 %car speed
-subplot(2,2,3);
+subplot(2,3,3);
 [carSpeed,topSpeed]=skrrrt(hallEffect); %turns hall effect to car speed
 plot(timeSeconds,carSpeed);
+hold on
+plot(timeSeconds,gpsSpeed,"red")
 title("Car Speed"); 
 xlabel('Time (sec)');
 ylabel('Speed (mph)');
+legend("from hall effect","from GPS");
 
 %formatting text
 speed = "Top Speed: "+string(topSpeed)+" mph";
@@ -57,8 +66,18 @@ rdroop = "Cosest to Full Droop (rear): "+ string(maxrd)+" in";
 fbump = "Closest to Full Bump (front): "+ string(maxfb)+" in";
 rbump = "Closest to Full Bump (rear): "+ string(maxrb)+" in";
 
+%GPS course
+subplot(2,3,4);
+plot(longitude, latitude)
+%xlim([-76.73 -76.70]);
+%ylim([39.19 39.22]);
+xlabel("Longitude (degrees)");
+ylabel("Latitude (degrees)");
+%must even out axes so course doesn't look stretched
+title('Course');
+
 %text
-subplot(2,2,4);
+subplot(2,3,6);
 text(0,0.5,speed+newline+fdroop+newline+rdroop+newline+fbump+newline+rbump);
 axis off;
 %accels
@@ -73,6 +92,7 @@ title("Accelerometer");
 legend('x','y','z');
 hold off
 %}
+
 sgtitle("Test # "+string(testNumber)+": "+string(testName));
 
 end

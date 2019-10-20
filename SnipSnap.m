@@ -74,6 +74,11 @@ stringPot = conv(Data(time,6),gf2,'same');
 zAccel = conv(Data(time,7),gf1,'same');
 hallEffect = conv(Data(time,16),gf1,'same');
 
+%reorganizing GPS data
+longitude = Data(time,18);
+latitude = Data(time,19);
+sog = conv(Data(time,20),gf1,'same');
+
 % Data(time,1)=hallEffect;
 % Data(time,2)=xAccel; %redundant
 % Data(time,3)=yAccel; %redundant
@@ -82,7 +87,7 @@ hallEffect = conv(Data(time,16),gf1,'same');
 % Data(time,6)=frontLinPot;
 % Data(time,7)=rearLinPot;
 
-cutData = [hallEffect xAccel yAccel zAccel stringPot frontLinPot rearLinPot];
+cutData = [hallEffect xAccel yAccel zAccel stringPot frontLinPot rearLinPot latitude longitude sog];
 save(newFileName, 'cutData');
 cleanedDataName = strcat(newFileName, '.mat');
 end
