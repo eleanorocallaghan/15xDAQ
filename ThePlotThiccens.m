@@ -30,6 +30,8 @@ title("Shock Extension/Compression");
 hold on
 plot(timeSeconds,rshock,"red");
 legend('rear','front');
+xlabel('Time (sec)');
+ylabel('Shock Displacement (inches)');
 hold off
 
 %steering angle
@@ -37,19 +39,23 @@ subplot(2,2,2)
 steeringAngle = ohWowSwerve(stringPot);
 plot(timeSeconds,steeringAngle);
 title("Steering Angle");
+xlabel('Time (sec)');
+ylabel('Steering Angle (degrees)');
 
 %car speed
 subplot(2,2,3);
 [carSpeed,topSpeed]=skrrrt(hallEffect); %turns hall effect to car speed
 plot(timeSeconds,carSpeed);
-title("Car Speed"); %should include top speed
+title("Car Speed"); 
+xlabel('Time (sec)');
+ylabel('Speed (mph)');
 
 %formatting text
-speed = strcat('Top Speed: ',string(topSpeed),'mph');
-fdroop = strcat('Closest to Full Droop (front):  ', string(maxfd),'in');
-rdroop = strcat('Cosest to Full Droop (rear):  ', string(maxrd),'in');
-fbump = strcat('Closest to Full Bump (front):  ', string(maxfb),'in');
-rbump = strcat('Closest to Full Bump (rear):  ', string(maxrb),'in');
+speed = "Top Speed: "+string(topSpeed)+" mph";
+fdroop = "Closest to Full Droop (front): "+ string(maxfd)+" in";
+rdroop = "Cosest to Full Droop (rear): "+ string(maxrd)+" in";
+fbump = "Closest to Full Bump (front): "+ string(maxfb)+" in";
+rbump = "Closest to Full Bump (rear): "+ string(maxrb)+" in";
 
 %text
 subplot(2,2,4);
@@ -67,6 +73,6 @@ title("Accelerometer");
 legend('x','y','z');
 hold off
 %}
-sgtitle(strcat('Test # ',string(testNumber),':  ',string(testName)));
+sgtitle("Test # "+string(testNumber)+": "+string(testName));
 
 end
