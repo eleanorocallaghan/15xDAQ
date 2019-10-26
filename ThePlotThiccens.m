@@ -60,7 +60,8 @@ ylabel('Speed (mph)');
 legend("from hall effect","from GPS");
 
 %formatting text
-speed = "Top Speed: "+string(topSpeed)+" mph";
+speed = "(Hall Effect) Top Speed: "+string(topSpeed)+" mph";
+gpsSpeed="(GPS) Top Speed: "+string(gpsMax)+" mph";
 fdroop = "Closest to Full Droop (front): "+ string(maxfd)+" in";
 rdroop = "Cosest to Full Droop (rear): "+ string(maxrd)+" in";
 fbump = "Closest to Full Bump (front): "+ string(maxfb)+" in";
@@ -69,8 +70,13 @@ rbump = "Closest to Full Bump (rear): "+ string(maxrb)+" in";
 %GPS course
 subplot(2,3,4);
 plot(longitude, latitude)
-%xlim([-76.73 -76.70]);
-%ylim([39.19 39.22]);
+%evening out the axes
+latrange=max(latitude)-min(latitude);
+longrange=max(longitude)-min(longitude);
+range=max([latrange longrange]);
+ylim([min(latitude) min(latitude)+range]); %axes limited by same range
+xlim([min(longitude) min(longitude)+range]);
+%evening out the axes
 xlabel("Longitude (degrees)");
 ylabel("Latitude (degrees)");
 %must even out axes so course doesn't look stretched
@@ -78,7 +84,7 @@ title('Course');
 
 %text
 subplot(2,3,6);
-text(0,0.5,speed+newline+fdroop+newline+rdroop+newline+fbump+newline+rbump);
+text(0,0.5,speed+newline+gpsSpeed+newline+fdroop+newline+rdroop+newline+fbump+newline+rbump);
 axis off;
 %accels
 %{
