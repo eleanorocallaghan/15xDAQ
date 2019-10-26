@@ -7,6 +7,7 @@ testNumber = table2array(testOverview(17:size(testOverview), 1));
 dataNameArray = strcat('Data', string(testNumber));
 
 i=input('Test Number?') +15; %input test number for plotting
+
 %{
 column order:
 1 - hall effect

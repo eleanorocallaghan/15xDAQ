@@ -35,7 +35,7 @@ plot(timeSeconds,fshock,"blue");
 title("Shock Extension/Compression");
 hold on
 plot(timeSeconds,rshock,"red");
-legend('rear','front');
+legend('front','rear');
 xlabel('Time (sec)');
 ylabel('Shock Displacement (inches)');
 hold off
