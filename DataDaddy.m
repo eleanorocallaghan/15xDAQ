@@ -7,6 +7,7 @@ testNumber = table2array(testOverview(17:size(testOverview), 1));
 dataNameArray = strcat('Data', string(testNumber));
 
 i=input('Test Number?') +15; %input test number for plotting
+
 %{
 column order:
 1 - hall effect
@@ -34,5 +35,5 @@ column order:
 %for i = 17:size(testOverview,1) %run through each data set and save modified data into new files
     filename(i-16, 1) = strcat(table2array(testOverview(i, 2)), '.mat');
     cleanedDataName = SnipSnap(filename(i-16), testNumber(i-16));
-    ThePlotThiccens(cleanedDataName,testNumber(i-16),testName(i-16));
+    [time, vfshock, timeSeconds] = ThePlotThiccens(cleanedDataName,testNumber(i-16),testName(i-16));
 %end

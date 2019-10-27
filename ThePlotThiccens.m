@@ -2,7 +2,7 @@
 %takes data cleaned up in formatting function (DriveDay190929v1.2)
 %puts data in a subplot
 
-function[] = ThePlotThiccens(cleanedDataName,testNumber,testName)
+function[time, vfshock, timeSeconds] = ThePlotThiccens(cleanedDataName,testNumber,testName)
 cleanedData = load(cleanedDataName);
 cleanedData = cleanedData.cutData;
 time=(1:size(cleanedData,1));
@@ -29,19 +29,61 @@ clf(figure(testNumber))
 figure(testNumber)
 
 %shock extension/compression
-subplot(2,3,1);
+subplot(2,4,1);
 [fshock,rshock,maxfd,maxrd,maxfb,maxrb] = mainSqueeze(rearLinPot,frontLinPot);
 plot(timeSeconds,fshock,"blue");
 title("Shock Extension/Compression");
 hold on
 plot(timeSeconds,rshock,"red");
-legend('rear','front');
+legend('front','rear');
 xlabel('Time (sec)');
 ylabel('Shock Displacement (inches)');
 hold off
 
+% shock velocity
+subplot(2,4,2);
+dxf = diff(fshock); % takes the difference between every shock travel value 
+% and the next value
+dxr = diff(rshock);
+dxf = dxf'; %transpose
+dxr = dxr';
+dt = diff(timeSeconds); %takes the difference between every time value and 
+% the next one (should be 1/1200HZ)
+vfshock = dxf./dt; % divide them to get the derivative of displacement (velocity)
+
+time = time(1:end-1); % change size of time so that it matches after 
+% differentiation
+time = time/1200; % get time into actual seconds
+
+time = time(120:end-120); % get rid of first part of time because there are weird spikes
+vfshock = vfshock(120:end-120); %see above
+
+time = time'; % transpose
+vfshock = vfshock'; % transpose
+
+plot(time, vfshock)
+
+% shock force
+springRate = 80;
+dampCoeff = 19.42;
+
+cutfshock = fshock(1:end-1);
+cutfshock = cutfshock(120:end-120);
+
+% timeSize = size(time)
+% vfShockSize = size(vfshock)
+% fShockSize = size(cutfshock)
+
+Ffshock = springRate * cutfshock + dampCoeff * vfshock;
+maxForce = max(abs(Ffshock))
+subplot(2,4,3)
+plot(time, Ffshock)
+
+vertWheelForce = maxForce * 5/10
+
+
 %steering angle
-subplot(2,3,2)
+subplot(2,4,4)
 steeringAngle = ohWowSwerve(stringPot);
 plot(timeSeconds,steeringAngle);
 title("Steering Angle");
@@ -49,7 +91,7 @@ xlabel('Time (sec)');
 ylabel('Steering Angle (degrees)');
 
 %car speed
-subplot(2,3,3);
+subplot(2,4,5);
 [carSpeed,topSpeed]=skrrrt(hallEffect); %turns hall effect to car speed
 plot(timeSeconds,carSpeed);
 hold on
@@ -68,7 +110,7 @@ fbump = "Closest to Full Bump (front): "+ string(maxfb)+" in";
 rbump = "Closest to Full Bump (rear): "+ string(maxrb)+" in";
 
 %GPS course
-subplot(2,3,4);
+subplot(2,4,6);
 plot(longitude, latitude)
 %evening out the axes
 latrange=max(latitude)-min(latitude);
@@ -83,12 +125,12 @@ ylabel("Latitude (degrees)");
 title('Course');
 
 %text
-subplot(2,3,6);
+subplot(2,4,7);
 text(0,0.5,speed+newline+gpsSpeed+newline+fdroop+newline+rdroop+newline+fbump+newline+rbump);
 axis off;
 %accels
 %{
-subplot(2,2,4);
+subplot(2,4,8);
 plot(timeSeconds,xAccel,"blue");
 hold on
 plot(timeSeconds,yAccel,"red");
