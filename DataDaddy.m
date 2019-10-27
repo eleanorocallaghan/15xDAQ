@@ -6,7 +6,7 @@ testName = table2array(testOverview(17:size(testOverview), 4));
 testNumber = table2array(testOverview(17:size(testOverview), 1));
 dataNameArray = strcat('Data', string(testNumber));
 
-i=input('Test Number?') +15; %input test number for plotting
+i=input('Test Number? ') +15; %input test number for plotting
 
 %{
 column order:
