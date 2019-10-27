@@ -21,4 +21,6 @@ maxRearBump = min(rearShock);
 %closest to full droop for both potentiometers
 maxFrontDroop = max(frontShock);
 maxRearDroop = max(rearShock);
+
+
 end
