@@ -22,7 +22,7 @@ longitude = cleanedData(time,9);
 sog = cleanedData(time,10);
 
 %plotting GPS data
-[gpsSpeed,gpsMax]=Jeeps(sog); %maybe add this to skrrrt?
+%[gpsSpeed,gpsMax]=Jeeps(sog); %maybe add this to skrrrt?
 
 %plotting
 clf(figure(testNumber))
@@ -101,7 +101,7 @@ ylabel('Steering Angle (degrees)');
 
 %car speed
 subplot(2,3,4);
-[carSpeed,topSpeed]=skrrrt(hallEffect); %turns hall effect to car speed
+[carSpeed,topSpeed,gpsSpeed,gpsMax]=skrrrt(hallEffect, sog); %turns hall effect to car speed
 plot(timeSeconds,carSpeed);
 hold on
 plot(timeSeconds,gpsSpeed,"red")
@@ -112,7 +112,7 @@ legend("from hall effect","from GPS");
 
 %formatting text
 speed = "(Hall Effect) Top Speed: "+string(topSpeed)+" mph";
-gpsSpeed="(GPS) Top Speed: "+string(gpsMax)+" mph";
+gpsTop="(GPS) Top Speed: "+string(gpsMax)+" mph";
 fdroop = "Closest to Full Droop (front): "+ string(maxfd)+" in";
 rdroop = "Cosest to Full Droop (rear): "+ string(maxrd)+" in";
 fbump = "Closest to Full Bump (front): "+ string(maxfb)+" in";
@@ -137,7 +137,7 @@ title('Course');
 
 %text
 subplot(2,3,6);
-text(0,0.5, speed + newline + gpsSpeed + newline + fdroop + newline + rdroop + newline + fbump + newline + rbump + newline + frontForce + newline + rearForce);
+text(0,0.5, speed + newline + gpsTop + newline + fdroop + newline + rdroop + newline + fbump + newline + rbump + newline + frontForce + newline + rearForce);
 axis off;
 %accels
 %{
