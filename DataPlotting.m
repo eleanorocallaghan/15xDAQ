@@ -1,6 +1,7 @@
 %plotting function for modified data
 %takes data cleaned up in formatting function (DriveDay190929v1.2)
 %puts data in a subplot
+
 function[]=DataPlotting(filename)
 Data=load(filename);
 time=(1:size(Data,1));
