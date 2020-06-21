@@ -1,10 +1,10 @@
-1,Rear linear potentiometer,,
-2,X acceleration,,
-3,Y acceleration,,
-4,Front linear Potentiometer,,
+1,Rear Linear Potentiometer,,
+2,X Acceleration,,
+3,Y Acceleration,,
+4,Front Linear Potentiometer,,
 5,0,,
 6,String Potentiometer,,
-7,Z acceleration,,
+7,Z Acceleration,,
 8,0,,
 9,0,,
 10,0,,
@@ -14,6 +14,11 @@
 14,0,,
 15,0,,
 16,Hall Effect,,
+17,0,,
+18,GPS Latitude,,
+19,GPS Longitude,,
+20,GPS SOG,,
+1,N/A,N/A,N/A
 2,190928DriveDay_0002,1200Hz,Sally
 3,190928DriveDay_0003,1200Hz,Sally
 4,190928DriveDay_0004,1200Hz,Sally

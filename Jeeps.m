@@ -8,8 +8,7 @@ function [speed,maxSpeed] = Jeeps(sog)
 %latitude=GPSData{:,3}; %x location in plot
 
 %speed=GPSData{:,9}/1.61; %compare w/car speed (in mph)
-speed=sog/1.61;
-maxSpeed=max(speed);
+
 %{
 figure(1)
 subplot(2,2,1)
